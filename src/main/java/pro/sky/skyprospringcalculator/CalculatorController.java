@@ -1,52 +1,61 @@
 package pro.sky.skyprospringcalculator;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
+@RequestMapping ("/calculator")
 public class CalculatorController {
-    private CalculatorServiceImpl hellowUser = new CalculatorServiceImpl();
-
-    @GetMapping(path = "/calculator")
-    public String calculator() {
-        return hellowUser.hellowCalculator();
+    private final CalculatorService calculatorService;
+    public CalculatorController(CalculatorService calculatorService) {
+        this.calculatorService=calculatorService;
     }
 
-    private CalculatorServiceImpl calculator = new CalculatorServiceImpl();
+    @GetMapping
+    public String hellowUser() {
+        return calculatorService.hellowCalculator();
+    }
 
-    @GetMapping(path = "/calculator/plus")
-    public String plus(Integer num1, Integer num2) {
-        if (num1 == null || num2 == null) {
+    @GetMapping(path = "/plus")
+    public String plus(@RequestParam (value = "num1", required = false) Integer a,
+                       @RequestParam (value = "num2", required = false) Integer b ) {
+        if (Objects.isNull(a)|| Objects.isNull(b)) {
             return "Ошибка, не заполнены все параметры";
         } else {
         }
-        return num1 + " + " + num2 + " = " + calculator.plus(num1, num2);
+        return a + " + " + b + " = " + calculatorService.plus(a, b);
     }
-
-    @GetMapping(path = "/calculator/minus")
-    public String minus(Integer num1, Integer num2) {
-        if (num1 == null || num2 == null) {
+    @GetMapping(path = "/minus")
+    public String minus(@RequestParam (value = "num1", required = false) Integer a,
+                        @RequestParam (value = "num2", required = false) Integer b ) {
+        if (Objects.isNull(a)|| Objects.isNull(b)) {
             return "Ошибка, не заполнены все параметры";
         } else {
         }
-        return num1 + " - " + num2 + " = " + calculator.minus(num1, num2);
+        return a + " - " + b + " = " + calculatorService.minus(a, b);
     }
-    @GetMapping(path = "/calculator/multiply")
-    public String multiply(Integer num1,Integer num2) {
-        if (num1 == null || num2 == null) {
+    @GetMapping(path = "/multiply")
+    public String multiply(@RequestParam (value = "num1", required = false) Integer a,
+                           @RequestParam (value = "num2", required = false) Integer b ) {
+        if (Objects.isNull(a)|| Objects.isNull(b)) {
             return "Ошибка, не заполнены все параметры";
         } else {
         }
-        return num1 + " * " + num2 + " = " + calculator.multiply(num1, num2);
+        return a + " * " + b + " = " + calculatorService.multiply(a, b);
     }
-    @GetMapping(path = "/calculator/divide")
-    public String divide(Integer num1,Integer num2) {
-        if (num1 == null || num2 == null) {
+    @GetMapping(path = "/divide")
+    public String divide(@RequestParam (value = "num1", required = false) Integer a,
+                         @RequestParam (value = "num2", required = false) Integer b ) {
+        if (Objects.isNull(a)|| Objects.isNull(b)) {
             return "Ошибка, не заполнены все параметры";
-        } else if  (num2==0) {
+        } else if  (b==0) {
             return "Ошибка, нельзя делить на 0!";
         } else {
         }
-        return num1 + " / " + num2 + " = " + calculator.divide(num1, num2);
+        return a + " / " + b + " = " + calculatorService.divide(a, b);
     }
 }

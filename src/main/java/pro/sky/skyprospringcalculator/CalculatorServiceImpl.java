@@ -10,27 +10,27 @@ public class CalculatorServiceImpl implements CalculatorService {
         return "Добро пожаловать в калькулятор!";
     }
     @Override
-    public String plus(Integer num1, Integer num2) {
+    public Integer plus(Integer a, Integer b) {
 
-        Integer plusResult = num1 + num2;
-        return plusResult.toString();
+        Integer plusResult = a + b;
+        return plusResult;
     }
     @Override
-    public String minus(Integer num1, Integer num2) {
+    public Integer minus(Integer a, Integer b) {
 
-        Integer minusResult = num1 - num2;
-        return minusResult.toString();
+        Integer minusResult = a - b;
+        return minusResult;
     }
     @Override
-    public String multiply(Integer num1, Integer num2) {
+    public Integer multiply(Integer a, Integer b) {
 
-        Integer multiplyResult = num1 * num2;
-        return multiplyResult.toString();
+        Integer multiplyResult = a * b;
+        return multiplyResult;
     }
     @Override
-    public String divide(Integer num1, Integer num2) {
-            Integer divideResult = num1 / num2;
-            return divideResult.toString();
+    public Number divide(Integer a, Integer b) {
+        Number divideResult = a.doubleValue()/b;
+        return divideResult;
         }
     }
 
