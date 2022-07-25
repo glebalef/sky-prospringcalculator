@@ -21,7 +21,7 @@ public class CalculatorController {
     }
 
     @GetMapping(path = "/plus")
-    public String plus(@RequestParam (value = "num1", required = false) Integer a,
+        public String plus(@RequestParam (value = "num1", required = false) Integer a,
                        @RequestParam (value = "num2", required = false) Integer b ) {
         if (Objects.isNull(a)|| Objects.isNull(b)) {
             return "Ошибка, не заполнены все параметры";
@@ -52,8 +52,6 @@ public class CalculatorController {
                          @RequestParam (value = "num2", required = false) Integer b ) {
         if (Objects.isNull(a)|| Objects.isNull(b)) {
             return "Ошибка, не заполнены все параметры";
-        } else if  (b==0) {
-            return "Ошибка, нельзя делить на 0!";
         } else {
         }
         return a + " / " + b + " = " + calculatorService.divide(a, b);

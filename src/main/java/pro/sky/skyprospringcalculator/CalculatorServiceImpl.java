@@ -28,8 +28,9 @@ public class CalculatorServiceImpl implements CalculatorService {
         return multiplyResult;
     }
     @Override
-    public Number divide(Integer a, Integer b) {
-        Number divideResult = a.doubleValue()/b;
+    public int divide(Integer a, Integer b) {
+        int divideResult = (int) (a.doubleValue()/b);
+        if (b == 0) throw new DevideByZeroExeption();
         return divideResult;
         }
     }
