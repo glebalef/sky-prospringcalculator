@@ -10,6 +10,6 @@ public interface CalculatorService {
 
     public Integer multiply(Integer num1,Integer num2);
 
-    public Number divide(Integer num1, Integer num2);
+    public int divide(Integer num1, Integer num2);
 
 }
